@@ -1,7 +1,7 @@
 
-/* ===== Campus Café: styles.css ===== */
+/* Campus Cafe - Task 7 cleaned stylesheet */
 
-/* ---------- 1. Reset, tokens and base typography ---------- */
+/* Reset and variables */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -19,8 +19,12 @@
     --radius: 12px;
 }
 
+/* Base page layout */
 body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: "Segoe UI", Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
@@ -28,7 +32,7 @@ body {
     background: var(--bg);
 }
 
-/* ---------- 2. Headings, links, focus ---------- */
+/* Headings */
 h1, h2, h3 {
     font-family: Georgia, "Times New Roman", serif;
     color: var(--brand-dark);
@@ -50,6 +54,12 @@ h3 {
     margin: 0 0 8px;
 }
 
+h1 + p {
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+/* Links and keyboard focus */
 a {
     color: var(--brand);
 }
@@ -68,9 +78,11 @@ textarea:focus-visible {
     outline-offset: 3px;
 }
 
-/* ---------- 3. Page shell ---------- */
+/* Main content */
 #main {
+    width: 100%;
     max-width: 1000px;
+    flex: 1;
     margin: 0 auto;
     padding: 24px;
 }
@@ -81,19 +93,25 @@ main > figure {
     margin: 0 0 32px;
 }
 
-h1 + p {
-    font-size: 1.1rem;
-    color: var(--muted);
-}
-
-/* ---------- 4. Header and navigation ---------- */
+/* Header and navigation: one consolidated rule */
 .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background: var(--brand-dark);
     color: #fff;
     padding: 12px 24px;
 }
 
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #fff;
     text-decoration: none;
     font-family: Georgia, "Times New Roman", serif;
@@ -102,8 +120,11 @@ h1 + p {
 }
 
 .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     list-style: none;
-    margin: 12px 0 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -129,8 +150,13 @@ h1 + p {
     font-weight: 700;
 }
 
-/* ---------- 5. Footer ---------- */
+/* Footer */
 .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
     background: var(--brand-dark);
     color: #fff;
     padding: 20px 24px;
@@ -144,7 +170,7 @@ h1 + p {
     color: #fff;
 }
 
-/* ---------- 6. Hero, buttons, cards ---------- */
+/* Hero section */
 .hero {
     background: var(--brand);
     color: #fff;
@@ -161,6 +187,7 @@ h1 + p {
     margin-bottom: 12px;
 }
 
+/* Buttons */
 .btn {
     display: inline-block;
     background: var(--accent);
@@ -191,6 +218,7 @@ h1 + p {
     color: #fff;
 }
 
+/* Cards */
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -208,7 +236,7 @@ figcaption {
     font-size: 0.9rem;
 }
 
-/* ---------- 7. Menu, tables ---------- */
+/* Menu sections */
 .menu-group h2::before {
     content: "";
     display: inline-block;
@@ -220,17 +248,32 @@ figcaption {
     vertical-align: -0.12em;
 }
 
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
 .menu-item {
+    position: relative;
+    flex: 1 1 300px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px 20px;
-    margin-bottom: 16px;
+    margin-bottom: 0;
 }
 
 .menu-item p {
     margin: 0;
     color: var(--muted);
+}
+
+.item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
 }
 
 .item-head h3 {
@@ -240,6 +283,12 @@ figcaption {
 .price {
     font-weight: 700;
     color: var(--brand);
+}
+
+/* Table */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 16px;
 }
 
 table {
@@ -274,13 +323,13 @@ tbody tr:nth-child(even) {
     background: #fbf6f0;
 }
 
-/* ---------- 8. Attribute selectors and pseudo-elements ---------- */
+/* External links */
 a[href^="http"]::after {
     content: " \2197";
     font-size: 0.85em;
 }
 
-/* ---------- 9. Forms ---------- */
+/* Form controls */
 form > fieldset {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -300,8 +349,8 @@ label {
 }
 
 input, select, textarea {
-    font: inherit;
     width: 100%;
+    font: inherit;
     padding: 10px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -335,7 +384,166 @@ input[placeholder]:not(:placeholder-shown):invalid {
     color: #0a6b50;
 }
 
-/* ---------- TEMPORARY: specificity experiment (delete in Step 4.9) ---------- */
-#main p {
-    color: red;
+/* Popular badge */
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--accent);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+}
+
+.skip-link:focus {
+    left: 8px;
+    top: 8px;
+    z-index: 200;
+    background: #fff;
+    color: var(--brand-dark);
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+/* Back-to-top link */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand);
+    color: #fff;
+    font-size: 1.4rem;
+    text-decoration: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:hover {
+    background: var(--brand-dark);
+    color: #fff;
+}
+
+/* Home card layout */
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-row > .card {
+    flex: 1 1 260px;
+}
+
+/* Form layout */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-row > .field,
+.form-row > .choice {
+    flex: 1 1 220px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+fieldset.choice {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.saved-orders {
+    margin-top: 40px;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    #main {
+        padding: 16px;
+    }
+
+    .hero {
+        padding: 32px 20px;
+    }
+
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .nav-list {
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Print */
+@media print {
+    .site-header,
+    .site-footer,
+    .back-to-top,
+    .skip-link,
+    .btn {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
+
+    #main,
+    h1, h2, h3, p, a {
+        color: #000;
+        box-shadow: none;
+    }
 }
