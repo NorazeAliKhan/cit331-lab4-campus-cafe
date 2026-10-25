@@ -1,5 +1,5 @@
 
-/* ===== Campus Café: styles.css ===== */
+/* Campus Cafe - Task 7 cleaned stylesheet */
 
 /* 1. Reset and variables */
 *, *::before, *::after {
@@ -19,6 +19,7 @@
     --radius: 12px;
 }
 
+/* Base page layout */
 body {
     margin: 0;
     min-height: 100vh;
@@ -53,6 +54,12 @@ h3 {
     margin: 0 0 8px;
 }
 
+h1 + p {
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+/* Links and keyboard focus */
 a {
     color: var(--brand);
 }
@@ -185,6 +192,7 @@ h1 + p {
     margin-bottom: 12px;
 }
 
+/* Buttons */
 .btn {
     display: inline-block;
     background: var(--accent);
@@ -215,6 +223,7 @@ h1 + p {
     color: #fff;
 }
 
+/* Cards */
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -279,6 +288,12 @@ figcaption {
 .price {
     font-weight: 700;
     color: var(--brand);
+}
+
+/* Table */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 16px;
 }
 
 table {
