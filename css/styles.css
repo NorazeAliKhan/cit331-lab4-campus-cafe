@@ -1,7 +1,7 @@
 
 /* Campus Cafe - Task 7 cleaned stylesheet */
 
-/* Reset and variables */
+/* 1. Reset and variables */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -32,7 +32,7 @@ body {
     background: var(--bg);
 }
 
-/* Headings */
+/* 2. Headings, links and focus */
 h1, h2, h3 {
     font-family: Georgia, "Times New Roman", serif;
     color: var(--brand-dark);
@@ -78,7 +78,7 @@ textarea:focus-visible {
     outline-offset: 3px;
 }
 
-/* Main content */
+/* 3. Page shell */
 #main {
     width: 100%;
     max-width: 1000px;
@@ -93,16 +93,21 @@ main > figure {
     margin: 0 0 32px;
 }
 
-/* Header and navigation: one consolidated rule */
+h1 + p {
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+/* 4. Header and navigation */
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     background: var(--brand-dark);
     color: #fff;
     padding: 12px 24px;
@@ -150,7 +155,7 @@ main > figure {
     font-weight: 700;
 }
 
-/* Footer */
+/* 5. Footer */
 .site-footer {
     display: flex;
     flex-wrap: wrap;
@@ -170,7 +175,7 @@ main > figure {
     color: #fff;
 }
 
-/* Hero section */
+/* 6. Hero, buttons and cards */
 .hero {
     background: var(--brand);
     color: #fff;
@@ -236,7 +241,7 @@ figcaption {
     font-size: 0.9rem;
 }
 
-/* Menu sections */
+/* 7. Menu and tables */
 .menu-group h2::before {
     content: "";
     display: inline-block;
@@ -323,13 +328,13 @@ tbody tr:nth-child(even) {
     background: #fbf6f0;
 }
 
-/* External links */
+/* 8. External links */
 a[href^="http"]::after {
     content: " \2197";
     font-size: 0.85em;
 }
 
-/* Form controls */
+/* 9. Forms */
 form > fieldset {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -384,7 +389,7 @@ input[placeholder]:not(:placeholder-shown):invalid {
     color: #0a6b50;
 }
 
-/* Popular badge */
+/* 10. Positioning */
 .badge {
     position: absolute;
     top: 12px;
@@ -397,24 +402,6 @@ input[placeholder]:not(:placeholder-shown):invalid {
     border-radius: 999px;
 }
 
-/* Skip link */
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-}
-
-.skip-link:focus {
-    left: 8px;
-    top: 8px;
-    z-index: 200;
-    background: #fff;
-    color: var(--brand-dark);
-    padding: 8px 14px;
-    border-radius: 8px;
-}
-
-/* Back-to-top link */
 .back-to-top {
     position: fixed;
     right: 20px;
@@ -437,7 +424,23 @@ input[placeholder]:not(:placeholder-shown):invalid {
     color: #fff;
 }
 
-/* Home card layout */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+}
+
+.skip-link:focus {
+    left: 8px;
+    top: 8px;
+    z-index: 200;
+    background: #fff;
+    color: var(--brand-dark);
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+/* 11. Flexbox: home cards */
 .card-row {
     display: flex;
     flex-wrap: wrap;
@@ -448,7 +451,7 @@ input[placeholder]:not(:placeholder-shown):invalid {
     flex: 1 1 260px;
 }
 
-/* Form layout */
+/* 12. Flexbox: order form */
 .form-row {
     display: flex;
     flex-wrap: wrap;
@@ -482,13 +485,17 @@ fieldset.choice {
     margin-top: 40px;
 }
 
-/* Responsive images */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
+
+/* 13. Responsive layout */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     h1 {
         font-size: 1.9rem;
@@ -508,7 +515,6 @@ img {
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .nav-list {
         flex-wrap: wrap;
@@ -523,27 +529,5 @@ img {
     .site-footer {
         flex-direction: column;
         align-items: flex-start;
-    }
-}
-
-/* Print */
-@media print {
-    .site-header,
-    .site-footer,
-    .back-to-top,
-    .skip-link,
-    .btn {
-        display: none !important;
-    }
-
-    body {
-        background: #fff;
-        color: #000;
-    }
-
-    #main,
-    h1, h2, h3, p, a {
-        color: #000;
-        box-shadow: none;
     }
 }
