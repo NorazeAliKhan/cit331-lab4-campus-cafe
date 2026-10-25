@@ -1,54 +1,51 @@
 
-# Campus Café — Lab 4 Notes
+# Campus Café Lab Notes
 
-## HTTP observations (Lab 4, Task 1)
+## HTTP observations — Task 1
 
-| Question | My answer |
+| Observation | Result |
 |---|---|
-| Request method for index.html | GET |
-| Status code with Disable cache ticked | 200 OK |
-| Status code on a normal reload | Record the value shown in DevTools |
-| Status code for /nothing-here.html | 404 Not Found |
-| Content-Type response header | Record the value shown in DevTools |
-| Remote Address (IP and port) | Record the value shown in DevTools |
-| Protocol in the address bar | http on localhost |
+| Local URL | [Your localhost URL] |
+| Request method | [Observed method] |
+| Local status code | [Observed status] |
+| Local server header | [Observed server header] |
+| Missing page status | [Observed status] |
 
-### Why is this address http and not https?
+## CSS specificity — Task 4
 
-Localhost traffic stays on my own computer and does not travel across an external network. HTTPS is especially important when traffic travels across a network and needs encryption and authentication.
+An ID selector has higher specificity than a class selector, and a class selector has higher specificity than an element selector. When specificity is equal, the later matching rule normally wins.
 
-## Specificity experiment
+## Selector examples — Task 4
 
-The ID selector `#main p` overrides `.hero p` because ID selectors have higher specificity. Changing it to `main p` gives `.hero p` priority because class selectors have higher specificity than element selectors.
-
-## Selectors I used
-
-| Selector kind | Example from my CSS |
+| Selector | Purpose |
 |---|---|
-| Element | `body` |
-| Class | `.hero` |
-| ID | `#main` |
-| Grouping | `h1, h2, h3` |
-| Descendant | `.site-footer a` |
-| Child (`>`) | `main > section` |
-| Adjacent sibling (`+`) | `h1 + p` |
-| Compound | `a.active` |
-| Attribute | `a[href^="http"]` |
-| Pseudo-class | `a:hover` |
-| Pseudo-element | `a[href^="http"]::after` |
+| `.card` | Selects elements with the card class |
+| `#main` | Selects the element with the main ID |
+| `a:hover` | Styles links while the pointer is over them |
+| `input[required]` | Selects required input elements |
+| `a[href^="http"]` | Selects links whose href starts with http |
 
-## Bug log
+## Bug log — Task 6
 
-| Problem | Fix |
-|---|---|
-| CSS did not load | Corrected the stylesheet path to `css/styles.css`. |
-| Hero text had the wrong color | Used `.hero h1, .hero p { color: #fff; }`. |
-| External link arrow was missing | Used `a[href^="http"]::after`. |
-| Form orders were not saved | Checked the form IDs, JavaScript path and localStorage code. |
+| # | What was wrong (file and line) | Which tool showed it | My fix |
+|---|---|---|---|
+| 1 | [Your finding] | [Tool] | [Fix] |
+| 2 | [Your finding] | [Tool] | [Fix] |
+| 3 | [Your finding] | [Tool] | [Fix] |
+| 4 | [Your finding] | [Tool] | [Fix] |
+| 5 | [Your finding] | [Tool] | [Fix] |
+| 6 | [Your finding] | [Tool] | [Fix] |
+| 7 | [Your finding] | [Tool] | [Fix] |
+| 8 | [Your finding] | [Tool] | [Fix] |
+| 9 | [Your finding] | [Tool] | [Fix] |
+| 10 | [Your finding] | [Tool] | [Fix] |
 
-## Live site observations (Lab 4, Task 7)
+## Live site observations — Task 7
 
-1. **Localhost vs live site:** Localhost uses HTTP and a local address. GitHub Pages uses HTTPS and a remote server. Record the actual server header and Remote Address shown in DevTools.
-2. **Padlock and certificate:** The padlock indicates an encrypted HTTPS connection, and the certificate helps verify the site's identity. Plain HTTP traffic can potentially be read or changed by an attacker on the same Wi-Fi.
-3. **Saved orders:** Orders saved on localhost do not appear on the live site because localStorage is separated by origin.
-4. **Missing page:** The missing page should return `404 Not Found`. Record whether the response came from GitHub Pages or another server based on DevTools.
+1. **Localhost vs live site:** [Record the local and live protocols, server headers and Remote Address shown in DevTools.]
+
+2. **HTTPS certificate:** [Record the certificate issuer and validity dates. Explain how HTTPS helps protect data in transit.]
+
+3. **Saved orders:** Orders saved on localhost do not automatically appear on the live site because localStorage is separated by origin.
+
+4. **Missing page:** [Record the status code and what the browser displayed for your missing-page request.]
